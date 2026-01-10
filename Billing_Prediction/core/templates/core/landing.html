@@ -1,0 +1,89 @@
+
+
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}BillingAI | AI-Powered Healthcare Billing{% endblock %}
+
+{% block content %}
+<section class="hero">
+   
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+        <h1>
+            Predict Patient Billing<br>
+            <span>With Machine Learning</span>
+        </h1>
+
+        <p>
+            BillingAI uses advanced machine learning models to estimate
+            patient billing amounts accurately, securely, and efficiently.
+        </p>
+
+        <div class="hero-actions">
+            <a href="{% url 'register' %}" class="btn btn-primary">
+                Get Started
+            </a>
+            <a href="{% url 'about' %}" class="btn btn-outline">
+                Learn More
+            </a>
+        </div>
+    </div>
+     <div class="hero-bg">
+        <img src="{% static 'images/landing-bg.png' %}" alt="Healthcare AI Background">
+    </div>
+
+</section>
+
+<section class="features">
+    <div class="features-header">
+        <h2>Why BillingAI?</h2>
+        <p>
+            Designed to bring accuracy, transparency, and intelligence
+            into healthcare billing systems.
+        </p>
+    </div>
+
+    <div class="features-grid">
+
+        <div class="feature-card">
+            <div class="feature-icon">📊</div>
+            <h3>Accurate Predictions</h3>
+            <p>
+                Machine learning model trained on real healthcare data
+                to estimate patient billing with high accuracy.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">🔐</div>
+            <h3>Secure Access</h3>
+            <p>
+                Authentication powered by Django ensures that predictions
+                are accessible only to authorized users.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">⚙️</div>
+            <h3>Modern Tech Stack</h3>
+            <p>
+                Built using Django, Scikit-learn, and MongoDB
+                following clean and scalable architecture.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <h3>Real-Time Results</h3>
+            <p>
+                Instantly generate billing predictions through
+                an interactive and responsive user interface.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}

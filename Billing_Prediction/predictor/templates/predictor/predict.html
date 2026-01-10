@@ -1,0 +1,152 @@
+{% extends 'layout.html' %}
+
+{% block title %}Predict | BillingAI{% endblock %}
+
+{% block content %}
+<section class="predict-section">
+
+    <div class="card predict-card">
+        <h2>Patient Billing Prediction</h2>
+        <p class="predict-subtitle">
+            Enter patient and treatment details to estimate billing amount
+        </p>
+
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="predict-grid">
+
+                <!-- Age -->
+                <div class="form-group">
+                    <label>Age</label>
+                    <input type="number" name="Age"
+                           value="{{ form_data.Age }}" required>
+                </div>
+
+                <!-- Gender -->
+                <div class="form-group">
+                    <label>Gender</label>
+                    <select name="Gender" required>
+                        <option value="">Select</option>
+                        <option value="Male"
+                            {% if form_data.Gender == "Male" %}selected{% endif %}>
+                            Male
+                        </option>
+                        <option value="Female"
+                            {% if form_data.Gender == "Female" %}selected{% endif %}>
+                            Female
+                        </option>
+                    </select>
+                </div>
+
+                <!-- Blood Type -->
+                <div class="form-group">
+                    <label>Blood Type</label>
+                    <select name="Blood_Type" required>
+                        <option value="">Select</option>
+                        <option value="A+" {% if form_data.Blood_Type == "A+" %}selected{% endif %}>A+</option>
+                        <option value="A-" {% if form_data.Blood_Type == "A-" %}selected{% endif %}>A-</option>
+                        <option value="B+" {% if form_data.Blood_Type == "B+" %}selected{% endif %}>B+</option>
+                        <option value="B-" {% if form_data.Blood_Type == "B-" %}selected{% endif %}>B-</option>
+                        <option value="O+" {% if form_data.Blood_Type == "O+" %}selected{% endif %}>O+</option>
+                        <option value="O-" {% if form_data.Blood_Type == "O-" %}selected{% endif %}>O-</option>
+                        <option value="AB+" {% if form_data.Blood_Type == "AB+" %}selected{% endif %}>AB+</option>
+                        <option value="AB-" {% if form_data.Blood_Type == "AB-" %}selected{% endif %}>AB-</option>
+                    </select>
+                </div>
+
+                <!-- Medical Condition -->
+                <div class="form-group">
+                    <label>Medical Condition</label>
+                    <select name="Medical_Condition" required>
+                        <option value="">Select</option>
+                        <option value="Infections" {% if form_data.Medical_Condition == "Infections" %}selected{% endif %}>Infections</option>
+                        <option value="Flu" {% if form_data.Medical_Condition == "Flu" %}selected{% endif %}>Flu</option>
+                        <option value="Cancer" {% if form_data.Medical_Condition == "Cancer" %}selected{% endif %}>Cancer</option>
+                        <option value="Asthma" {% if form_data.Medical_Condition == "Asthma" %}selected{% endif %}>Asthma</option>
+                        <option value="Heart Disease" {% if form_data.Medical_Condition == "Heart Disease" %}selected{% endif %}>Heart Disease</option>
+                        <option value="Alzheimer’s" {% if form_data.Medical_Condition == "Alzheimer’s" %}selected{% endif %}>Alzheimer’s</option>
+                        <option value="Diabetes" {% if form_data.Medical_Condition == "Diabetes" %}selected{% endif %}>Diabetes</option>
+                        <option value="Obesity" {% if form_data.Medical_Condition == "Obesity" %}selected{% endif %}>Obesity</option>
+                    </select>
+                </div>
+
+                <!-- Insurance Provider -->
+                <div class="form-group">
+                    <label>Insurance Provider</label>
+                    <select name="Insurance_Provider" required>
+                        <option value="">Select</option>
+                        <option value="Blue Cross" {% if form_data.Insurance_Provider == "Blue Cross" %}selected{% endif %}>Blue Cross</option>
+                        <option value="UnitedHealthcare" {% if form_data.Insurance_Provider == "UnitedHealthcare" %}selected{% endif %}>UnitedHealthcare</option>
+                        <option value="Aetna" {% if form_data.Insurance_Provider == "Aetna" %}selected{% endif %}>Aetna</option>
+                        <option value="Cigna" {% if form_data.Insurance_Provider == "Cigna" %}selected{% endif %}>Cigna</option>
+                        <option value="Medicare" {% if form_data.Insurance_Provider == "Medicare" %}selected{% endif %}>Medicare</option>
+                    </select>
+                </div>
+
+                <!-- Admission Type -->
+                <div class="form-group">
+                    <label>Admission Type</label>
+                    <select name="Admission_Type" required>
+                        <option value="">Select</option>
+                        <option value="Emergency" {% if form_data.Admission_Type == "Emergency" %}selected{% endif %}>Emergency</option>
+                        <option value="Elective" {% if form_data.Admission_Type == "Elective" %}selected{% endif %}>Elective</option>
+                        <option value="Routine" {% if form_data.Admission_Type == "Routine" %}selected{% endif %}>Routine</option>
+                        <option value="Urgent" {% if form_data.Admission_Type == "Urgent" %}selected{% endif %}>Urgent</option>
+                    </select>
+                </div>
+
+                <!-- Medication -->
+                <div class="form-group">
+                    <label>Medication</label>
+                    <input type="text" name="Medication"
+                           value="{{ form_data.Medication }}" required>
+                </div>
+
+                <!-- Test Results -->
+                <div class="form-group">
+                    <label>Test Results</label>
+                    <select name="Test_Results" required>
+                        <option value="">Select</option>
+                        <option value="Normal" {% if form_data.Test_Results == "Normal" %}selected{% endif %}>Normal</option>
+                        <option value="Abnormal" {% if form_data.Test_Results == "Abnormal" %}selected{% endif %}>Abnormal</option>
+                        <option value="Inconclusive" {% if form_data.Test_Results == "Inconclusive" %}selected{% endif %}>Inconclusive</option>
+                    </select>
+                </div>
+
+                <!-- Length of Stay -->
+                <div class="form-group">
+                    <label>Length of Stay (days)</label>
+                    <input type="number" name="Length_of_Stay"
+                           value="{{ form_data.Length_of_Stay }}" required>
+                </div>
+
+            </div>
+
+            <button type="submit" class="btn btn-primary predict-btn">
+                <span class="btn-text">Predict Billing Amount</span>
+                <span class="btn-loader"></span>
+            </button>
+
+        </form>
+    </div>
+
+    {% if prediction %}
+    <div class="card result-card">
+        <h3>Predicted Billing Amount</h3>
+        <p class="result-value">₹ {{ prediction }}</p>
+    </div>
+    {% endif %}
+
+</section>
+
+<script>
+    const form = document.querySelector("form");
+    const button = document.querySelector(".predict-btn");
+
+    form.addEventListener("submit", () => {
+        button.classList.add("loading");
+    });
+</script>
+
+{% endblock %}

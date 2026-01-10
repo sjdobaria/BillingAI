@@ -1,0 +1,69 @@
+{% extends 'layout.html' %}
+
+{% block title %}About | BillingAI{% endblock %}
+
+{% block content %}
+<section class="about-section">
+
+    <div class="about-header">
+        <h1>About BillingAI</h1>
+        <p class="about-intro">
+            BillingAI is an intelligent healthcare billing prediction system
+            that leverages machine learning to estimate patient billing costs
+            accurately and efficiently.
+        </p>
+    </div>
+
+    <div class="about-grid">
+
+        <div class="about-card">
+            <div class="about-icon">🎯</div>
+            <h3>Project Objective</h3>
+            <p>
+                To help hospitals and healthcare providers estimate
+                patient billing amounts in advance using data-driven insights.
+            </p>
+        </div>
+
+        <div class="about-card">
+            <div class="about-icon">🧠</div>
+            <h3>Machine Learning</h3>
+            <p>
+                A regression-based ML model trained on healthcare data
+                with strong performance (high R² score) predicts billing costs
+                based on patient and treatment attributes.
+            </p>
+        </div>
+
+        <div class="about-card">
+            <div class="about-icon">⚙️</div>
+            <h3>Technology Stack</h3>
+            <p>
+                Frontend built with HTML & CSS, backend powered by Django,
+                machine learning using Scikit-learn, and predictions
+                stored securely in MongoDB.
+            </p>
+        </div>
+
+        <div class="about-card">
+            <div class="about-icon">🔐</div>
+            <h3>Security & Authentication</h3>
+            <p>
+                Secure user authentication implemented using Django’s
+                built-in authentication system. Only authorized users
+                can access prediction features.
+            </p>
+        </div>
+
+    </div>
+
+    <div class="about-footer">
+        <p>
+            This project demonstrates a real-world full-stack machine learning
+            application with clean architecture, security best practices,
+            and scalable design principles.
+        </p>
+    </div>
+
+</section>
+{% endblock %}
