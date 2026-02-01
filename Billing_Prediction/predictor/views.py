@@ -69,6 +69,8 @@
 import requests
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from datetime import datetime
+from .mongo import predictions_collection
 
 API_URL = "https://sjdobaria-billing-api.hf.space/predict"
 
