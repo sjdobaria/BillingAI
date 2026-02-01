@@ -94,5 +94,5 @@ def predict_view(request):
             "prediction": result["prediction"]
         })
 
-    return render(request, "predictor/form.html")
+    return render(request, "predictor/predict.html")
 
