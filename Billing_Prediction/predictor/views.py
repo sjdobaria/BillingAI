@@ -84,7 +84,7 @@ def predict_view(request):
             "Admission_Type": request.POST["Admission_Type"],
             "Medication": request.POST["Medication"],
             "Test_Results": request.POST["Test_Results"],
-            "Length_of_Stay": int(request.POST["Length_Of_Stay"]),
+            "Length_of_Stay": int(request.POST["Length_of_Stay"]),
         }
 
         response = requests.post(API_URL, json=payload)
