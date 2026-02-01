@@ -78,8 +78,8 @@ def predict_view(request):
         payload = {
             "Age": int(request.POST["Age"]),
             "Gender": request.POST["Gender"],
-            "Blood_Type": request.POST["Blood_type"],
-            "Medical_Condition": request.POST["Medical_condition"],
+            "Blood_Type": request.POST["Blood_Type"],
+            "Medical_Condition": request.POST["Medical_Condition"],
             "Insurance_Provider": request.POST["Insurance_Provider"],
             "Admission_Type": request.POST["Admission_Type"],
             "Medication": request.POST["Medication"],
