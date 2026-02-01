@@ -89,7 +89,7 @@ def predict_view(request):
             "Length_of_Stay": int(request.POST["Length_of_Stay"]),
         }
 
-        response = requests.post(API_URL, json=payload,timeout=5)
+        response = requests.post(API_URL, json=payload)
         result = response.json()
 
         # predictions_collection.insert_one({
