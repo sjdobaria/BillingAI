@@ -90,7 +90,7 @@ def predict_view(request):
         response = requests.post(API_URL, json=payload)
         result = response.json()
 
-        return render(request, "predictor/result.html", {
+        return render(request, "predictor/predict.html", {
             "prediction": result["prediction"]
         })
 
