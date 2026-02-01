@@ -90,6 +90,13 @@ def predict_view(request):
         response = requests.post(API_URL, json=payload)
         result = response.json()
 
+        predictions_collection.insert_one({
+            "username": request.user.username,
+            "inputs": payload,
+            "prediction": result["prediction"],
+            "timestamp": datetime.utcnow()
+        })
+
         return render(request, "predictor/predict.html", {
             "prediction": result["prediction"]
         })
