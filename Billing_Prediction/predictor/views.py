@@ -76,15 +76,15 @@ API_URL = "https://sjdobaria-billing-api.hf.space/predict"
 def predict_view(request):
     if request.method == "POST":
         payload = {
-            "Age": int(request.POST["age"]),
-            "Gender": request.POST["gender"],
-            "Blood_Type": request.POST["blood_type"],
-            "Medical_Condition": request.POST["medical_condition"],
-            "Insurance_Provider": request.POST["insurance_provider"],
-            "Admission_Type": request.POST["admission_type"],
-            "Medication": request.POST["medication"],
-            "Test_Results": request.POST["test_results"],
-            "Length_of_Stay": int(request.POST["length_of_stay"]),
+            "Age": int(request.POST["Age"]),
+            "Gender": request.POST["Gender"],
+            "Blood_Type": request.POST["Blood_type"],
+            "Medical_Condition": request.POST["Medical_condition"],
+            "Insurance_Provider": request.POST["Insurance_Provider"],
+            "Admission_Type": request.POST["Admission_Type"],
+            "Medication": request.POST["Medication"],
+            "Test_Results": request.POST["Test_Results"],
+            "Length_of_Stay": int(request.POST["Length_Of_Stay"]),
         }
 
         response = requests.post(API_URL, json=payload)
