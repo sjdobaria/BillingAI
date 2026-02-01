@@ -89,15 +89,15 @@ def predict_view(request):
             "Length_of_Stay": int(request.POST["Length_of_Stay"]),
         }
 
-        response = requests.post(API_URL, json=payload)
+        response = requests.post(API_URL, json=payload,timeout=5)
         result = response.json()
 
-        predictions_collection.insert_one({
-            "username": request.user.username,
-            "inputs": payload,
-            "prediction": result["prediction"],
-            "timestamp": datetime.utcnow()
-        })
+        # predictions_collection.insert_one({
+        #     "username": request.user.username,
+        #     "inputs": payload,
+        #     "prediction": result["prediction"],
+        #     "timestamp": datetime.utcnow()
+        # })
 
         return render(request, "predictor/predict.html", {
             "prediction": result["prediction"]
