@@ -1,0 +1,11 @@
+django>=6.0
+djangorestframework
+djangorestframework-simplejwt
+django-cors-headers
+pymongo[srv]
+dnspython
+joblib
+scikit-learn
+pandas
+numpy
+python-dotenv
